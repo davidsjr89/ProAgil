@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xQwZk3zrzdCISat43DfJB5R0Le+L77kKMmB9y2rXuF1fjhQS6cewcClgsQqgUoA/qaW7YhC5Pu+OoirXsXWcSw==",
+  "dgSpecHash": "UQDv4iWZvas4HKVfPDoE2pAf7NG1itT7oeUAT522FNRIzIRYNrhlQhDWVyNQhgUSEtT6xulKM5gcohSxByN2RA==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\Core\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\Projetos\\Core\\ProAgil\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\david\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

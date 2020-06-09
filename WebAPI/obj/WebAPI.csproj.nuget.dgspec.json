@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\Core\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Projetos\\Core\\ProAgil\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\Core\\WebAPI\\WebAPI.csproj": {
+    "C:\\Projetos\\Core\\ProAgil\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\Core\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Projetos\\Core\\ProAgil\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Projetos\\Core\\WebAPI\\WebAPI.csproj",
+        "projectPath": "C:\\Projetos\\Core\\ProAgil\\WebAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\Core\\WebAPI\\obj\\",
+        "outputPath": "C:\\Projetos\\Core\\ProAgil\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
