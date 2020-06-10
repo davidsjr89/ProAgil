@@ -1,6 +1,5 @@
 bin
 obj
-.vscode
 .vs
 .DS_Store
 
@@ -31,7 +30,7 @@ speed-measure-plugin*.json
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

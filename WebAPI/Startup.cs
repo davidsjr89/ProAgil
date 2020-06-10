@@ -40,6 +40,7 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors(x=>  x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
 
             app.UseRouting();

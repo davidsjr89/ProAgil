@@ -224,3 +224,7 @@ C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\staticwebassets\WebAPI.S
 C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.dll
 C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.pdb
 C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.genruntimeconfig.cache
+C:\Projetos\Core\ProAgil\WebAPI\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Projetos\Core\ProAgil\WebAPI\bin\Debug\netcoreapp3.1\Repository.dll
+C:\Projetos\Core\ProAgil\WebAPI\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Projetos\Core\ProAgil\WebAPI\bin\Debug\netcoreapp3.1\Repository.pdb

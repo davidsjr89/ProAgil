@@ -8,8 +8,8 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200607182826_init")]
-    partial class init
+    [Migration("20200609201411_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,9 @@ namespace WebAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DataEvento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImagemUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Local")

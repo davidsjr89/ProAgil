@@ -2,7 +2,7 @@
 
 namespace WebAPI.Migrations
 {
-    public partial class init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace WebAPI.Migrations
                     DataEvento = table.Column<string>(nullable: true),
                     Tema = table.Column<string>(nullable: true),
                     QtdPessoas = table.Column<int>(nullable: false),
-                    Lote = table.Column<string>(nullable: true)
+                    Lote = table.Column<string>(nullable: true),
+                    ImagemUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
