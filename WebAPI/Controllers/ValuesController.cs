@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Data;
-using WebAPI.Model;
+using Repository;
 
 namespace WebAPI.Controllers
 {
@@ -15,8 +11,8 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase
     {
-        public readonly DataContext _dbcontext;
-        public ValuesController(DataContext context){
+        public readonly ProAgilContext _dbcontext;
+        public ValuesController(ProAgilContext context){
             _dbcontext = context;
         }
 
@@ -37,7 +33,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Get(int id){
             try
             {
-                return Ok(await _dbcontext.Eventos.FirstOrDefaultAsync(x => x.EventoId == id));
+                return Ok(await _dbcontext.Eventos.FirstOrDefaultAsync(x => x.Id == id));
             }
             catch (System.Exception)
             {
