@@ -15,6 +15,8 @@ namespace WebAPI.Controllers
         {
             _repo = repo;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -28,12 +30,12 @@ namespace WebAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
         }
-        [HttpGet("EventoId")]
-        public async Task<IActionResult> Get(int EventoId)
+        [HttpGet("id")]
+        public async Task<IActionResult> Get(int id)
         {
             try
             {
-                var results = await _repo.GetEventosAsyncById(EventoId, true);
+                var results = await _repo.GetEventosAsyncById(id, true);
                 return Ok(results);
             }
             catch( System.Exception)
@@ -71,12 +73,12 @@ namespace WebAPI.Controllers
             }
             return BadRequest();
         }
-         [HttpPut]
-        public async Task<IActionResult> Put(int EventoId, Evento model)
+         [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Evento model)
         {
             try
             {
-                var evento = await _repo.GetEventosAsyncById(EventoId, false);
+                var evento = await _repo.GetEventosAsyncById(id, false);
                 if(evento == null) return NotFound();
                 _repo.Update(model);
                 if(await _repo.SaveChangesAsync())
@@ -90,12 +92,12 @@ namespace WebAPI.Controllers
             }
             return BadRequest();
         }
-         [HttpDelete]
-        public async Task<IActionResult> Delete(int EventoId)
+         [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var evento = await _repo.GetEventosAsyncById(EventoId, false);
+                var evento = await _repo.GetEventosAsyncById(id, false);
                 if(evento == null) return NotFound();
 
                 _repo.Delete(evento);

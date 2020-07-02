@@ -28,9 +28,10 @@ namespace WebAPI.Controllers
                     return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
                 }
         }
-        
+
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id){
+        public async Task<IActionResult> Get(int id)
+        {
             try
             {
                 return Ok(await _dbcontext.Eventos.FirstOrDefaultAsync(x => x.Id == id));
