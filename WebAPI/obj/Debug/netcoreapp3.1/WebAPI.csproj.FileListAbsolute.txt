@@ -63,3 +63,5 @@ C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\staticwebassets\WebAPI.S
 C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.dll
 C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.pdb
 C:\Projetos\Core\ProAgil\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.genruntimeconfig.cache
+C:\Projetos\Core\ProAgil\WebAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Projetos\Core\ProAgil\WebAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

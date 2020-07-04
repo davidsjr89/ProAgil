@@ -1,8 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository;
+using WebAPI.Dtos;
 
 namespace WebAPI.Controllers
 {
@@ -11,8 +15,10 @@ namespace WebAPI.Controllers
     public class EventoController : ControllerBase
     {
         private readonly IRepository _repo;
-        public EventoController(IRepository repo)
+        private readonly IMapper _mapper;
+        public EventoController(IRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
@@ -22,92 +28,100 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var results = await _repo.GetAllEventoAsync(true);
+                var eventos = await _repo.GetAllEventoAsync(true);
+                var results = _mapper.Map<IEnumerable<EventoDto>>(eventos);
                 return Ok(results);
             }
-            catch( System.Exception)
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             try
             {
-                var results = await _repo.GetEventosAsyncById(id, true);
-                return Ok(results);
+                var evento = await _repo.GetEventosAsyncById(id, true);
+                var result = _mapper.Map<EventoDto>(evento);
+                return Ok(result);
             }
-            catch( System.Exception)
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
         }
-         [HttpGet("getByTema/{tema}")]
+        [HttpGet("getByTema/{tema}")]
         public async Task<IActionResult> Get(string tema)
         {
             try
             {
-                var results = await _repo.GetAllEventoAsyncByTema(tema, true);
+                var eventos = await _repo.GetAllEventoAsyncByTema(tema, true);
+                var results = _mapper.Map<Evento[]>(eventos);
                 return Ok(results);
             }
-            catch( System.Exception)
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
         }
-         [HttpPost]
-        public async Task<IActionResult> Post(Evento model)
+        [HttpPost]
+        public async Task<IActionResult> Post(EventoDto model)
         {
             try
             {
-                _repo.Add(model);
-                if(await _repo.SaveChangesAsync())
+                var evento = _mapper.Map<Evento>(model);
+                _repo.Add(evento);
+                if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/evento/{model.Id}", model);
+                    return Created($"/api/evento/{model.Id}", _mapper.Map<EventoDto>(evento));
                 }
             }
-            catch( System.Exception)
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
             return BadRequest();
         }
-         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Evento model)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, EventoDto model)
         {
             try
             {
                 var evento = await _repo.GetEventosAsyncById(id, false);
-                if(evento == null) return NotFound();
-                _repo.Update(model);
-                if(await _repo.SaveChangesAsync())
+                if (evento == null) return NotFound();
+
+                _mapper.Map(model, evento);
+
+                _repo.Update(evento);
+
+                if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/evento/{model.Id}", model);
+                    return Created($"/api/evento/{model.Id}", _mapper.Map<EventoDto>(evento));
                 }
             }
-            catch( System.Exception)
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
             return BadRequest();
         }
-         [HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
                 var evento = await _repo.GetEventosAsyncById(id, false);
-                if(evento == null) return NotFound();
+                if (evento == null) return NotFound();
 
                 _repo.Delete(evento);
 
-                if(await _repo.SaveChangesAsync())
+                if (await _repo.SaveChangesAsync())
                 {
                     return Ok();
                 }
             }
-            catch( System.Exception)
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RmKOBqPi2Wb+3PN/SDBWx0/qrOvB2MOKDuL7BbLsDEJfZj2Njk6YgWfQW+vAHpoGBEu0Q2RX7YKYAZsiwpgp2Q==",
+  "dgSpecHash": "+/cZ+hWxK9MfPktlTlnesc37zKoYNLovuw/rhXENA1lVINJm2rbdtWY5xSyf1x2H6s5wjwIIY3NJZXlr++95XA==",
   "success": true,
   "projectFilePath": "C:\\Projetos\\Core\\ProAgil\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\automapper\\7.0.1\\automapper.7.0.1.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\4.0.1\\automapper.extensions.microsoft.dependencyinjection.4.0.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -37,7 +39,8 @@
     "C:\\Users\\david\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\david\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+    "C:\\Users\\david\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
