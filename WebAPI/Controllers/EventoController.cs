@@ -54,29 +54,30 @@ namespace WebAPI.Controllers
             }
         }
         [HttpPost("upload")]
-        public async Task<IActionResult> upload()
+        public IActionResult upload()
         {
             try
             {
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine("Resources","Images");
+                var folderName = Path.Combine("Resources", "Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                if(file.Length > 0)
+                if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
-                    var fullPath = Path.Combine(pathToSave, fileName.Replace("\""," ").Trim());
-                    using(var stream = new FileStream(fullPath, FileMode.Create))
+                    var fullPath = Path.Combine(pathToSave, fileName.Replace("\"", " ").Trim());
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
                 }
-                
+
                 return Ok();
-            }catch(System.Exception)
+            }
+            catch (System.Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados não encontrado");
             }
-            return BadRequest("Erro ao tentar realizar o upload.");
+            // return BadRequest("Erro ao tentar realizar o upload.");
         }
 
         [HttpGet("getByTema/{tema}")]
