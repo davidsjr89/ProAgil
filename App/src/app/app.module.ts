@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContatosComponent } from './contatos/contatos.component';
-import { TitiuloComponent } from './_shared/titiulo/titiulo.component';
+import { TituloComponent } from './_shared/titulo/titulo.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegistrationComponent } from './user/registration/registration.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+
 
 
 @NgModule({
@@ -30,8 +35,11 @@ import { TitiuloComponent } from './_shared/titiulo/titiulo.component';
       DateTimeFormatPipePipe,
       PalestrantesComponent,
       DashboardComponent,
-      TitiuloComponent,
-      ContatosComponent
+      TituloComponent,
+      ContatosComponent,
+      UserComponent,
+      LoginComponent,
+      RegistrationComponent
    ],
    imports: [
       BrowserModule,
@@ -47,7 +55,12 @@ import { TitiuloComponent } from './_shared/titiulo/titiulo.component';
       AppRoutingModule
    ],
    providers: [
-      EventoService
+      EventoService,
+      {
+         provide: HTTP_INTERCEPTORS,
+         useClass: AuthInterceptor,
+         multi: true
+      }
    ],
    bootstrap: [
       AppComponent
