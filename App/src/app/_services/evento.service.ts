@@ -16,11 +16,14 @@ constructor(private http: HttpClient) {
   getEventoByTema(tema: string): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
   }
+  getEventoById(id: number): Observable<Evento> {
+    return this.http.get<Evento>(`${this.baseURL}/${id}`);
+  }
   getAllEventoById(id: number): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${id}`);
   }
   postUpload(file: File, name: string){
-    const fileToUpload = <File>file[0];
+    const fileToUpload = file[0] as File;
     const formData = new FormData();
     formData.append('file', fileToUpload, name);
     return this.http.post(`${this.baseURL}/upload`, formData);

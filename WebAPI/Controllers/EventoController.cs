@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -117,11 +118,28 @@ namespace WebAPI.Controllers
         {
             try
             {
+                var idLotes = new List<int>();
+                var idRedesSocias = new List<int>();
+
+                foreach(var item in model.Lotes)
+                    idLotes.Add(item.Id);
+
+                foreach(var item in model.RedesSociais)
+                    idRedesSocias.Add(item.Id);
+                
                 var evento = await _repo.GetEventosAsyncById(id, false);
                 if (evento == null) return NotFound();
 
-                _mapper.Map(model, evento);
+                var lotes = evento.Lotes.Where(lote => !idLotes.Contains(lote.Id)).ToList<Lote>();
+                var redesSociais = evento.RedesSociais.Where(rede => !idRedesSocias.Contains(rede.Id)).ToList<RedeSocial>();
+                
+                if(lotes.Count > 0)
+                    lotes.ForEach(lote => _repo.Delete(lote));
 
+                if(redesSociais.Count > 0)
+                    redesSociais.ForEach(rede => _repo.Delete(rede));
+
+                _mapper.Map(model, evento);
                 _repo.Update(evento);
 
                 if (await _repo.SaveChangesAsync())

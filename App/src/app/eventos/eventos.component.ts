@@ -29,7 +29,7 @@ export class EventosComponent implements OnInit {
   file: File;
   dataAtual: string;
 
-  _filtroLista = '';
+  filtroListar = '';
   fileNameToUpdate: string;
 
   constructor(
@@ -45,10 +45,10 @@ export class EventosComponent implements OnInit {
 
 
   get filtroLista(): string{
-    return this._filtroLista;
+    return this.filtroListar;
   }
   set filtroLista(value: string){
-      this._filtroLista = value;
+      this.filtroListar = value;
       this.eventoFiltrado = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
   }
 
@@ -118,6 +118,7 @@ export class EventosComponent implements OnInit {
 
   uploadImagem()
   {
+    // tslint:disable-next-line: no-conditional-assignment
     if (this.modoSalvar = 'post'){
       const nomeArquivo = this.evento.imagemUrl.split( '\\' , 3 );
       this.evento.imagemUrl = nomeArquivo[2];
@@ -185,13 +186,14 @@ export class EventosComponent implements OnInit {
       qtdPessoas: ['', [Validators.required, Validators.max(12000)]],
       telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-    })
+    });
   }
 
   getEventos(){
+    this.dataAtual = new Date().getMilliseconds().toString();
     this.eventoService.getAllEvento().subscribe(
-      (_eventos: Evento[]) => {
-      this.eventos = _eventos;
+      ( eventos: Evento[]) => {
+      this.eventos = eventos;
       this.eventoFiltrado = this.eventos;
     },
       error => {

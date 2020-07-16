@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ToastrModule } from 'ngx-toastr';
-
+import { NgxMaskModule } from 'ngx-mask';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { NavComponent } from './nav/nav.component';
@@ -24,13 +24,15 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { EventoeditComponent } from './eventos/eventoEdit/eventoEdit.component';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
    declarations: [
       AppComponent,
       EventosComponent,
+      EventoeditComponent,
       NavComponent,
       DateTimeFormatPipePipe,
       PalestrantesComponent,
@@ -43,16 +45,19 @@ import { AuthInterceptor } from './auth/auth.interceptor';
    ],
    imports: [
       BrowserModule,
+      NgxMaskModule.forRoot(),
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
       TooltipModule.forRoot(),
       ModalModule.forRoot(),
       ToastrModule.forRoot(),
+      TabsModule.forRoot(),
+      NgxCurrencyModule,
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
       ReactiveFormsModule,
-      AppRoutingModule
+      AppRoutingModule,
    ],
    providers: [
       EventoService,

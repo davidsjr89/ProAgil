@@ -17,8 +17,11 @@ export class AuthService {
       post(`${this.baseURL}login`, model).pipe(
         map((response: any) => {
           const user = response;
-          localStorage.setItem('token', user.token);
-          this.decodedToken = this.jwtHelper.decodeToken(user.token);
+          if (user){
+            localStorage.setItem('token', user.token);
+            this.decodedToken = this.jwtHelper.decodeToken(user.token);
+            sessionStorage.setItem('username', this.decodedToken.unique_name);
+          }
         })
       );
   }
